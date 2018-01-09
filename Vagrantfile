@@ -6,15 +6,15 @@ portworx_disk = './tmp/portworx.vdi'
 
 Vagrant.configure("2") do |config|
 
-	config.vm.define "host1" do |host1|
+  config.vm.define "host1" do |host1|
 
-		host1.vm.box = "ubuntu/xenial64"
-		host1.vm.hostname = "host1"
+    host1.vm.box = "ubuntu/xenial64"
+    host1.vm.hostname = "host1"
 
     config.vm.provider "virtualbox" do |v|
 
-		  v.memory = 2048
-		  v.cpus = 2
+      v.memory = 2048
+      v.cpus = 2
 
       unless File.exists?(docker_disk)
         v.customize ['createhd', '--filename', docker_disk, '--size', 25 * 1024]
@@ -32,8 +32,8 @@ Vagrant.configure("2") do |config|
 	end
 
   config.vm.provision "ansible" do |ansible|
-		ansible.verbose = "v"
-		ansible.playbook = "provisioning/playbook.yml"
+    ansible.verbose = "v"
+    ansible.playbook = "provisioning/playbook.yml"
   end
 
 end
