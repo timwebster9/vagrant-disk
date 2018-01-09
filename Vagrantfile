@@ -29,7 +29,7 @@ Vagrant.configure("2") do |config|
 
     end
 
-	end
+  end
 
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "v"
