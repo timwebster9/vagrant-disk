@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "host1" do |host1|
 
     host1.vm.box = "ubuntu/xenial64"
+    host1.vm.network "public_network", ip: "192.168.1.200", bridge: "enp6s0"
     host1.vm.hostname = "host1"
 
     config.vm.provider "virtualbox" do |v|
@@ -31,7 +32,7 @@ Vagrant.configure("2") do |config|
 
   end
 
-  config.vm.provision "ansible" do |ansible|
+  config.vm.provision "ansible_local" do |ansible|
     ansible.verbose = "v"
     ansible.playbook = "provisioning/playbook.yml"
   end

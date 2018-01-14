@@ -50,6 +50,25 @@
       name: docker-ce
       state: present
 
+  - name: install Pip
+    apt:
+      name: python-pip
+      state: present
+      
+  - name: install Docker Python dependencies
+    pip:
+      name: docker-py
+
+  - name: install Rancher
+    docker_container:
+      name: rancher_server
+      image: rancher/server:preview
+      state: started
+      ports: 8080:8080
+
+
+      
+
 
       
 
